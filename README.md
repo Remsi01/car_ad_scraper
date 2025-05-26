@@ -14,7 +14,7 @@ Built with Playwright for headless web scraping, pandas for data processing.
 - **Data Management**: Stores data in `data/finn_cars.json`, trimming to the last 10,000 entries.
 - **Ranking**: Ranks cars based on a weighted score (`score = Year.rank(ascending=False) + Mileage.rank(ascending=True) + Price.rank(ascending=True) * 10`) and saves results to `data/sorted_cars.json` and `docs/sorted_cars.json`.
 - **Logging**: Uses rotating logs (`logs/main.log`, 5MB, 5 backups) for debugging and monitoring, with terminal output.
-- **Frontend**: Displays ranked listings in a table via a static HTML/JS viewer hosted on GitHub Pages.
+- **Frontend**: Displays ranked listings in a table via a static HTML (index.html).
 
 ---
 
