@@ -2,6 +2,7 @@ from playwright.sync_api import sync_playwright, TimeoutError
 import logging
 import time
 import re
+from src.config import SUSPICIOUS_PRICE_MAX, SUSPICIOUS_YEAR_MIN, SUSPICIOUS_MILEAGE_MAX
 
 def accept_cookie_consent(page):
     """
@@ -94,7 +95,7 @@ def scrape_finn_cars(return_data=False):
                     mileage = int(re.sub(r"\D", "", details[1])) if len(details) > 1 else 999999
 
                     # Filter for suspicious cars with monthly payment
-                    suspicious = price <= 15000 and year >= 2019 and mileage <= 100000
+                    suspicious = price <= SUSPICIOUS_PRICE_MAX and year >= SUSPICIOUS_YEAR_MIN and mileage <= SUSPICIOUS_MILEAGE_MAX
 
                     if suspicious:
                         logging.info(
