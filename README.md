@@ -53,8 +53,8 @@ finn_scraper/
 
 1. **Clone the repo**:
    ```bash
-   git clone https://github.com/Remsi01/finn_car_scraper
-   cd finn_car_scraper
+   git clone https://github.com/Remsi01/car_ad_scraper
+   cd car_ad_scraper
    ```
 
 2. **Set up a virtual environment** (recommended):
