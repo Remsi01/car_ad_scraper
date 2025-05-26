@@ -15,7 +15,7 @@ Built with Playwright for headless web scraping, pandas for data processing.
 - **Ranking**: Ranks cars based on a weighted score (`score = Year.rank(ascending=False) + Mileage.rank(ascending=True) + Price.rank(ascending=True) * 10`) and saves results to `data/sorted_cars.json` and `docs/sorted_cars.json`.
 - **Logging**: Uses rotating logs (`logs/main.log`, 5MB, 5 backups) for debugging and monitoring, with terminal output.
 - **Frontend**: Displays ranked listings in a table via a static HTML (index.html).
-
+- **Configuration**: Uses config.py to settings like file paths, scraping interval, and suspicious listing criteria, making it easy to customize the scraper.
 ---
 
 ## 🗂️ Project Structure
@@ -71,18 +71,22 @@ finn_scraper/
    playwright install  # Installs browser binaries for Playwright
    ```
 
-4. **Run the scraper loop**:
+4. **Customize configuration (optional)**:
+   - Edit src/config.py to adjust settings like the data file path (data/finn_cars.json), log file path (logs/main.log), scraping interval (15 minutes), or suspicious listing criteria (e.g., price ≤ 15,000 NOK, year ≥ 2019, mileage ≤ 100,000 km).
+   - Example: Change INTERVAL_MINUTES = 15 to INTERVAL_MINUTES = 30 to scrape every 30 minutes.
+
+5.**Run the scraper loop**:
    ```bash
    python main.py
    ```
    - The scraper runs every 15 minutes. Stop it with `Ctrl+C`.
    - Check logs in `logs/main.log` for debugging.
 
-5. **View output**:
+6.**View output**:
    - Ranked listings in `data/sorted_cars.json`.
    - Serve the frontend via GitHub Pages or locally by opening `docs/index.html` in a browser (ensure `docs/sorted_cars.json` is populated).
 
-6. **Optional: Set up GitHub Pages**:
+7.**Optional: Set up GitHub Pages**:
    - Push the `docs/` folder to a GitHub repository.
    - Enable GitHub Pages in the repository settings, selecting the `docs` folder as the source.
 
