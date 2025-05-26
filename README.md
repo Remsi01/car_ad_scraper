@@ -1,8 +1,8 @@
 # 🚗 Finn.no Car Scraper
 
-This project is a Python-based web scraper that extracts car listings from [finn.no](https://www.finn.no/), filters out suspicious ads (e.g., low price, recent year, low mileage) with monthly loan payments, and ranks the best matches based on price, mileage, and year. The scraper runs periodically (every 15 minutes), stores data in JSON format, and generates a ranked list of cars for analysis.
+This project is a Python-based web scraper that extracts car listings from [finn.no](https://www.finn.no/), Filters out suspicious listings (monthly payments) with prices that are too low for the given year and mileage.The scraper runs periodically (every 15 minutes), stores data in JSON format, and generates a ranked list of cars for analysis.
 
-Built with Playwright for headless web scraping, pandas for data processing and scoring.
+Built with Playwright for headless web scraping, pandas for data processing.
 
 ---
 
