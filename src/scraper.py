@@ -36,8 +36,8 @@ def go_to_next_page(page, page_number):
 
 def scrape_finn_cars(return_data=False):
     """
-    Scrapes car listings from Finn.no.
-    Filters suspicious listings (low price, recent year, low mileage).
+    Scrapes car listings from finn.no.
+    Filters out suspicious listings (monthly payments) with prices that are too low for the given year and mileage..
     Returns the collected data if return_data=True.
     """
     with sync_playwright() as p:
@@ -100,7 +100,6 @@ def scrape_finn_cars(return_data=False):
                         logging.info(
                             f"✅ Found suspicious car: {title} (Price: {price}, Year: {year}, Mileage: {mileage})"
                         )
-                        passed_monthly_check = True  # Assume it will pass
 
                         ad_page = context.new_page()
                         try:
@@ -109,7 +108,6 @@ def scrape_finn_cars(return_data=False):
 
                             if any("Månedspris" in (p.inner_text() or "") for p in ad_page.query_selector_all("p")):
                                 logging.info(f"⏩ Skipped (monthly payment): {title}")
-                                passed_monthly_check = False
                         except Exception as e:
                             logging.warning(f"⚠️ Could not open ad page for '{title}': {e}")
                             passed_monthly_check = False
@@ -144,7 +142,6 @@ def scrape_finn_cars(return_data=False):
                     logging.error(f"⚠️ Error parsing listing: {e}")
                     continue
 
-            # Pagination
             if not go_to_next_page(page, page_number):
                 break
             page_number += 1

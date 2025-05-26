@@ -88,6 +88,7 @@ def run_loop():
             save_data(all_ads)
 
             # Wait for the next scraping interval
+            print(f"Sleeping for {INTERVAL_MINUTES} min.")
             time.sleep(INTERVAL_MINUTES * 60)
     except KeyboardInterrupt:
         logging.warning("\n❌ Scraper stopped by user.")
