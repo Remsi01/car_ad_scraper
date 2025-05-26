@@ -33,6 +33,8 @@ finn_scraper/
 │   └── main.log               # Rotating log of scraper activity
 ├── src/
 │   ├── scraper.py             # Playwright-based scraper
+│   ├── __init__.py            # Marks src/ as a Python package
+│   ├── config.py              # Configuration settings
 │   ├── data_handler.py        # Saves and triggers ranking
 │   └── finn_cars_best_match.py # Scoring and ranking script
 ├── requirements.txt           # Python dependencies
