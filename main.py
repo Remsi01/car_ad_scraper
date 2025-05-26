@@ -3,17 +3,18 @@ import json
 import time
 import logging
 from logging.handlers import RotatingFileHandler
+from src.config import DATA_FILE, LOG_DIR, LOG_FILE, INTERVAL_MINUTES
 
 from src.scraper import scrape_finn_cars
 from src.data_handler import save_data
 
 # Constants
-DATA_FILE = "data/finn_cars.json"
-INTERVAL_MINUTES = 15
+#DATA_FILE = "data/finn_cars.json"
+#INTERVAL_MINUTES = 15
 
 # Logging setup
-LOG_DIR = "logs"
-LOG_FILE = os.path.join(LOG_DIR, "main.log")
+#LOG_DIR = "logs"
+#LOG_FILE = os.path.join(LOG_DIR, "main.log")
 os.makedirs(LOG_DIR, exist_ok=True)
 
 # Configure rotating file logger (5MB per file, keep last 5 logs)
